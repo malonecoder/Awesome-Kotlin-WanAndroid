@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">module_library</string>
+    <string name="listview_header_hint_normal">下拉刷新...</string>
+    <string name="listview_header_hint_release">释放刷新...</string>
+    <string name="listview_loading">努力加载中...</string>
+    <string name="nomore_loading">没有更多内容了</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_done">刷新完成...</string>
+    <string name="listview_header_last_time">上次更新时间：</string>
+
+
+    <string name="actionbar_webview_share">分享</string>
+    <string name="actionbar_webview_cope">复制链接</string>
+    <string name="actionbar_webview_open">浏览器打开</string>
+    <string name="actionbar_webview_refresh">刷新</string>
+    <string name="actionbar_webview_collect">添加到收藏</string>
+
+</resources>

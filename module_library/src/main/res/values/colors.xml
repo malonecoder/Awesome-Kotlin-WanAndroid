@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorTheme">#ffce3d3a</color>
+    <color name="colorLine">#EBEBEB</color>
+    <color name="colorHomeLine">#D4D4D4</color>
+    <color name="colorLineDeep">#BBBBBB</color>
+    <color name="colorLineItem">#FFDDDDDD</color>
+    <color name="colorContent">#ff333333</color>
+    <color name="colorTabText">#585858</color>
+    <color name="colorSubtitle">#999</color>
+    <color name="colorTitle">#666</color>
+    <color name="colorWhite">#ffffffff</color>
+    <color name="tabBackground">#777D7D7D</color>
+</resources>

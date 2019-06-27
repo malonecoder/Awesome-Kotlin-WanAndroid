@@ -5,12 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:3.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -27,4 +26,17 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-apply from: "config.gradle"
+
+ext{
+
+    retrofitVersion = '2.2.0'
+    okhttploggingVersion = '3.4.1'
+    okhttpVersion = '3.4.1'
+    rxjavaVersion = '2.0.1'
+    rxandroidVersion = '2.0.1'
+    rxbindingVersion = '2.0.0'
+    constraintVersion = '1.1.2'
+    butterknifeVwesion = '8.8.1'
+    glideVersion = '4.9.0'
+    glide_transformations = '3.0.1'
+}
