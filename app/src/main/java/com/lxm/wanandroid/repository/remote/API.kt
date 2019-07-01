@@ -1,6 +1,7 @@
 package com.lxm.wanandroid.repository.remote
 
 import com.lxm.wanandroid.repository.model.ArticleResponseBody
+import com.lxm.wanandroid.repository.model.Banner
 import com.lxm.wanandroid.repository.model.HttpResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -18,6 +19,14 @@ interface API{
     * */
 
     @GET("/article/list/{page}/json")
-    fun getArticleList(@Path(value = "page")page:Int):Observable<HttpResponse<ArticleResponseBody>>
+    fun getArticleList(@Path(value = "page")page:Int):Observable<HttpResponse<ArticleResponseBody<Any?>>>
+    /*
+    *
+    * 获取首页Banner
+    *
+    * */
+
+    @GET("/banner/json")
+    fun getHomeBanner():Observable<HttpResponse<List<Banner>>>
 
 }

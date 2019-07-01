@@ -35,4 +35,10 @@ object GlideUtil {
             .into(imageView)
     }
 
+    fun displayImage(imageView: ImageView, imageUrl: String) {
+        Glide.with(imageView.context)
+            .load(imageUrl)
+            .into(imageView)
+    }
+
 }

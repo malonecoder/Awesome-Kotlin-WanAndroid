@@ -10,7 +10,6 @@
     app:cardCornerRadius="8dp"
     tools:targetApi="lollipop">
 
-    <!--如果有点击事件，则内部的水波纹不能扩散-->
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

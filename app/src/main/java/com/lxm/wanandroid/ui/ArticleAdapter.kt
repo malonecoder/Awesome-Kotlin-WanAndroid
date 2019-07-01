@@ -9,7 +9,7 @@ import com.lxm.wanandroid.ui.base.BaseRecyclerViewHolder
 class ArticleAdapter : BaseRecyclerAdapter<ArticleBean>() {
 
     override fun getItemLayout(): Int {
-        return R.layout.item_article;
+        return R.layout.item_article
     }
 
     override fun convert(holder: BaseRecyclerViewHolder, position: Int) {

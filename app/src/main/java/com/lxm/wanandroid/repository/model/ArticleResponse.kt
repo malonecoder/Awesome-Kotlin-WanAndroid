@@ -21,13 +21,13 @@ data class HttpResponse<T>(
  * size : 20
  * total : 1596
  */
-data class ArticleResponseBody(var curPage: Int = 0,
-                               var offset: Int = 0,
-                               var isOver: Boolean = false,
-                               var pageCount: Int = 0,
-                               var size: Int = 0,
-                               var total: Int = 0,
-                               var datas: List<ArticleBean>? = null)
+data class ArticleResponseBody<T>(var curPage: Int = 0,
+                                  var offset: Int = 0,
+                                  var isOver: Boolean = false,
+                                  var pageCount: Int = 0,
+                                  var size: Int = 0,
+                                  var total: Int = 0,
+                                  var datas: List<ArticleBean>? = null)
 
 
 /**
