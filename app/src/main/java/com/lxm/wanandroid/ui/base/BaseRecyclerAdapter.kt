@@ -15,20 +15,6 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHol
     var listener: OnItemClickListener<T>? = null
 
 
-//    constructor(context: Context, @LayoutRes layoutRes: Int) {
-//        this.context = context
-//        this.layoutRes = layoutRes
-//        mutableList = ArrayList()
-//    }
-//
-//    constructor(context: Context, @LayoutRes layoutResId: Int, data: List<T>) {
-//        this.context = context
-//        this.mutableList = data ?: ArrayList()
-//        if (layoutResId != 0) {
-//            this.layoutRes = layoutResId
-//        }
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseRecyclerViewHolder {
         context = parent.context
         return BaseRecyclerViewHolder(

@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.lxm.wanandroid.R
+import kotlinx.android.synthetic.main.item_article.view.*
 
 class BaseRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val map = mutableMapOf<Int, View>()
-
     fun getView(id: Int): View? {
         var viewId = map[id]
         if (viewId == null) {
@@ -25,24 +26,22 @@ class BaseRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     fun setValue(id: Int, string: String?) {
         val view = getView(id)
 
-        when(view){
-            is TextView->view.text = string
-            is ImageView-> showPic(view,string)
+        when (view) {
+            is TextView -> view.text = string
+            is ImageView -> showPic(view, string)
         }
     }
 
     private fun showPic(view: ImageView, string: String?) {
-        if(TextUtils.isEmpty(string)){
+        if (TextUtils.isEmpty(string)) {
             view.visibility = View.GONE
-        }else{
+        } else {
             view.visibility = View.VISIBLE
-            Glide.with(view.getContext())
+            Glide.with(view.context)
                 .load(string)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .into(view)
         }
-        }
-
-
+    }
 
 }

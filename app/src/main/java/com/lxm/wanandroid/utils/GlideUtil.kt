@@ -1,11 +1,17 @@
 package com.lxm.wanandroid.utils
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import jp.wasabeef.glide.transformations.BlurTransformation
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+
+
 
 
 object GlideUtil {
@@ -16,7 +22,7 @@ object GlideUtil {
             .load(url)
             .transition(DrawableTransitionOptions.withCrossFade())
             .transition(DrawableTransitionOptions.withCrossFade(500))
-            .transform(BlurTransformation(50, 8))
+            .transform(BlurTransformation(50, 8) as Transformation<Bitmap>)
             .into(imageView)
     }
 
@@ -39,6 +45,13 @@ object GlideUtil {
         Glide.with(imageView.context)
             .load(imageUrl)
             .into(imageView)
+    }
+    fun displayCircleCorner(imageView: ImageView, imageUrl: String){
+        //设置图片圆角角度
+        val roundedCorners = RoundedCorners(6)
+//通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
+        val options = RequestOptions.bitmapTransform(roundedCorners)
+        Glide.with(imageView.context).load(imageUrl).apply(options).into(imageView)
     }
 
 }

@@ -19,7 +19,7 @@ const val PHOTO_URL = "http://cdn.duitang.com/uploads/item/201308/19/20130819160
 class MainActivity : AppCompatActivity() {
 
     private val mTitles by lazy {
-        mutableListOf("主页", "导航", "公众号", "工具","项目")
+        mutableListOf("主页","知识体系","导航","公众号","项目")
     }
     private val mFragments: MutableList<Fragment> by lazy {
         mutableListOf<Fragment>()

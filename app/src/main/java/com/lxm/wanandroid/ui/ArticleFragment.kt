@@ -1,30 +1,30 @@
 package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
 import com.lxm.module_library.base.BaseFragment
 import com.lxm.module_library.utils.RefreshHelper
 import com.lxm.module_library.xrecycleview.XRecyclerView
 import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.ArticleBean
+import com.lxm.wanandroid.repository.model.Banner
 import com.lxm.wanandroid.repository.model.Status
 import com.lxm.wanandroid.ui.base.OnItemClickListener
+import com.lxm.wanandroid.utils.GlideUtil
 import com.lxm.wanandroid.utils.webview.WebViewActivity
 import com.lxm.wanandroid.viewmodel.ArticleViewModel
+import com.zhouwei.mzbanner.holder.MZViewHolder
 import kotlinx.android.synthetic.main.article_banner.*
 import kotlinx.android.synthetic.main.article_fragment.*
-import android.view.LayoutInflater
-import com.zhouwei.mzbanner.holder.MZViewHolder
-import android.content.Context
-import android.view.View
-import android.widget.ImageView
-import com.lxm.wanandroid.repository.model.Banner
-import com.lxm.wanandroid.utils.GlideUtil
-
 
 class ArticleFragment : BaseFragment<ArticleViewModel>() {
 
-
+    private lateinit var headerView: View
+    private var bannerList : List<Banner>? = null
     private val mAdapter: ArticleAdapter by lazy {
         ArticleAdapter()
     }
@@ -48,15 +48,14 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
     private fun initView() {
         swipeLayout.setOnRefreshListener {
             viewModel.mPage = 0
-            getHomeList()
-            getBanner()
+            loadData()
         }
         swipeLayout.isRefreshing = true
-
         RefreshHelper.init(recyclerView, false)
-        recyclerView.adapter = mAdapter
+        headerView = layoutInflater.inflate(R.layout.article_banner, null)
+        recyclerView.addHeaderView(headerView)
 
-//        recyclerView.addHeaderView(banner)
+        recyclerView.adapter = mAdapter
         recyclerView.setLoadingListener(object : XRecyclerView.LoadingListener {
 
             override fun onLoadMore() {
@@ -65,51 +64,17 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
             }
 
             override fun onRefresh() {
-
-            }
-
-        })
-
-        mAdapter.setOnItemClickListener(object : OnItemClickListener<ArticleBean>{
-            override fun onClick(t: ArticleBean, position: Int) {
-                WebViewActivity.loadUrl(activity,"https://www.iqiyi.com",t.title);
             }
         })
-    }
-
-    override fun onRetry() {
-        getHomeList()
-    }
-
-    override fun loadData() {
-        getHomeList()
-        getBanner()
-    }
-
-    private fun getBanner() {
-        this.viewModel.getBanners().observe(this@ArticleFragment, Observer {
-            banner.setPages(
-                it?.data as List<Nothing>?
-            ) {
-                BannerViewHolder()
-            }
-        })
-    }
-
-    private fun getHomeList() {
-        viewModel.getHomeList()
         viewModel.loadStatus.observe(this, Observer {
 
-            when(it?.status){
-                Status.ERROR ->  showError()
-                Status.SUCCESS-> showContentView()
+            when (it?.status) {
+                Status.ERROR -> showError()
+                Status.SUCCESS -> showContentView()
             }
-
         })
-
         this.viewModel.pagedList.observe(this, Observer {
-
-            if(it == null){
+            if (it == null) {
                 return@Observer
             }
             swipeLayout.isRefreshing = false
@@ -120,6 +85,25 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
             mAdapter.notifyItemRangeInserted(positionStart, it.data?.datas?.size!!)
         })
 
+        mAdapter.setOnItemClickListener(object : OnItemClickListener<ArticleBean> {
+            override fun onClick(t: ArticleBean, position: Int) {
+                WebViewActivity.loadUrl(activity, t.link, t.title)
+            }
+        })
+    }
+
+    private fun getBanners() {
+        viewModel.getBanners().observe(this@ArticleFragment, Observer {
+            bannerList = it?.data
+
+            banner.setPages(
+                it?.data as List<Nothing>?
+            ) {
+                BannerViewHolder()
+            }
+            banner.start()
+
+        })
     }
 
     class BannerViewHolder : MZViewHolder<Banner> {
@@ -133,23 +117,23 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
 
         override fun onBind(context: Context, position: Int, data: Banner?) {
             data?.let {
-                GlideUtil.displayImage(mImageView!!,data.imagePath)
+                GlideUtil.displayCircleCorner(mImageView!!, data.imagePath)
             }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        if(banner!= null){
-            banner.start()
-        }
 
+    override fun onRetry() {
+        loadData()
     }
 
-    override fun onPause() {
-        super.onPause()
-        if(banner!= null){
-            banner.pause()
-        }
+    override fun loadData() {
+        getHomeList()
+        getBanners()
     }
+
+    private fun getHomeList() {
+        this.viewModel.getHomeList()
+    }
+
 }
