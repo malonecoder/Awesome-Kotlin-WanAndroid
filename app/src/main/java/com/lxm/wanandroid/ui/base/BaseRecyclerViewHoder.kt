@@ -7,10 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.lxm.wanandroid.R
-import kotlinx.android.synthetic.main.item_article.view.*
 
-class BaseRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class BaseRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val map = mutableMapOf<Int, View>()
     fun getView(id: Int): View? {

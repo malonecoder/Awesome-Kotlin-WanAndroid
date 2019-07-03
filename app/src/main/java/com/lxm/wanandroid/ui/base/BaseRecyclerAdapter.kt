@@ -5,7 +5,6 @@ import android.support.annotation.IntRange
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 
 abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHolder>() {
 
@@ -31,7 +30,7 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHol
     }
 
     override fun onBindViewHolder(holder: BaseRecyclerViewHolder, position: Int) {
-        convert(holder, position)
+        onBindViewHoder(holder, position)
         holder.itemView.setOnClickListener {
             listener?.onClick(mutableList.get(position),position)
         }
@@ -87,7 +86,7 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHol
      * @param holder
      * @param position
      */
-    abstract fun convert(holder: BaseRecyclerViewHolder, position: Int)
+    abstract fun onBindViewHoder(holder: BaseRecyclerViewHolder, position: Int)
 
     abstract fun getItemLayout(): Int
 }

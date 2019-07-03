@@ -39,13 +39,15 @@ class ArticleViewModel : BaseViewModel() {
     }
 
     fun getBanners(): MutableLiveData<HttpResponse<List<Banner>>> {
-        RetrofitClient.instance.getHomeBanner()
+        val subscribe = RetrofitClient.instance.getHomeBanner()
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<List<Banner>>>{
                 banner.postValue(it)
             }, Consumer<Throwable> {
                 banner.postValue(null)
             })
+
+        addDisposable(subscribe)
         return banner
     }
 }

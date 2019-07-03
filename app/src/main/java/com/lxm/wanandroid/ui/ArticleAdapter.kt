@@ -2,7 +2,6 @@ package com.lxm.wanandroid.ui
 
 
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.ArticleBean
@@ -15,7 +14,7 @@ class ArticleAdapter : BaseRecyclerAdapter<ArticleBean>() {
         return R.layout.item_view
     }
 
-    override fun convert(holder: BaseRecyclerViewHolder, position: Int) {
+    override fun onBindViewHoder(holder: BaseRecyclerViewHolder, position: Int) {
         var articleBean: ArticleBean = mutableList?.get(position)
         holder.setValue(R.id.tv_title, articleBean.title)
         holder.setValue(R.id.tv_time, articleBean.niceDate)
