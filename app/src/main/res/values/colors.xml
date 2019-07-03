@@ -8,4 +8,8 @@
     <color name="colorTheme">#343434</color>
     <color name="color_page_bg">#F1F3F4</color>
     <color name="colorSmallRed">#faebeb</color>
+    <color name="colorKnowledge_bg">#FFFAFA</color>
+
+
+
 </resources>

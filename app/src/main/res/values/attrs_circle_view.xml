@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="circletextview">
+        <attr name="circle_color" format="color"/>
+        <attr name="circle_text_color" format="color"/>
+        <attr name="random_color" format="boolean"/>
+        <attr name="sub_first_character" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewBorder">
+        <attr name="tvborderColor" format="color" />
+        <attr name="tvBorderWidth" format="integer" />
+    </declare-styleable>
+</resources>

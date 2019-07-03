@@ -95,7 +95,9 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
     private fun getBanners() {
         viewModel.getBanners().observe(this@ArticleFragment, Observer {
             bannerList = it?.data
-
+            banner.setBannerPageClickListener { view, i ->
+                WebViewActivity.loadUrl(activity, it?.data?.get(i)?.url,null)
+            }
             banner.setPages(
                 it?.data as List<Nothing>?
             ) {
