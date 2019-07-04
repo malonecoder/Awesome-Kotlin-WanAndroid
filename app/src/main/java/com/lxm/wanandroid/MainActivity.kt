@@ -16,11 +16,11 @@ import com.lxm.wanandroid.ui.TreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-const val PHOTO_URL = "http://cdn.duitang.com/uploads/item/201308/19/20130819160917_RAvwE.thumb.700_0.jpeg"
+const val PHOTO_URL = "http://uploads.5068.com/allimg/1806/189-1P605160Z6-50.jpg"
 class MainActivity : AppCompatActivity() {
 
     private val mTitles by lazy {
-        mutableListOf("主页","知识体系","导航","公众号","项目")
+        mutableListOf("主页","知识体系","导航","项目","福利")
     }
     private val mFragments: MutableList<Fragment> by lazy {
         mutableListOf<Fragment>()
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         actionBar?.setDisplayShowTitleEnabled(false)
 
         Glide.with(this@MainActivity)
-            .load(R.drawable.photo)
+            .load(PHOTO_URL)
             .transition(DrawableTransitionOptions.withCrossFade(500))
             .transform(CircleCrop())
             .into(iv_avatar)

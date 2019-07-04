@@ -7,18 +7,16 @@ import com.lxm.wanandroid.repository.model.*
 import com.lxm.wanandroid.repository.remote.RetrofitClient
 import io.reactivex.functions.Consumer
 
-class ArticleViewModel : BaseViewModel() {
-
+class CategoryViewModel: BaseViewModel() {
     var mPage = 0
-    var banner = MutableLiveData<HttpResponse<List<Banner>>>()
     val pagedList = MutableLiveData<HttpResponse<ArticleResponseBody<ArticleBean>>>()
     val loadStatus by lazy {
         MutableLiveData<Resource<String>>()
     }
 
-    fun getHomeList(): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
+    fun getCategory(id: Int): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
         loadStatus.postValue(Resource.loading())
-        val subscribe = RetrofitClient.instance.getArticleList(mPage)
+        val subscribe = RetrofitClient.instance.getCategory(mPage,id)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<ArticleResponseBody<ArticleBean>>> {
                 if(it.data != null){
@@ -38,16 +36,4 @@ class ArticleViewModel : BaseViewModel() {
         return Listing(pagedList,loadStatus)
     }
 
-    fun getBanners(): MutableLiveData<HttpResponse<List<Banner>>> {
-        val subscribe = RetrofitClient.instance.getHomeBanner()
-            .compose(RxHelper.rxSchedulerHelper())
-            .subscribe(Consumer<HttpResponse<List<Banner>>>{
-                banner.postValue(it)
-            }, Consumer<Throwable> {
-                banner.postValue(null)
-            })
-
-        addDisposable(subscribe)
-        return banner
-    }
 }

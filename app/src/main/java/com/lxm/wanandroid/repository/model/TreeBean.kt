@@ -1,5 +1,7 @@
 package com.lxm.wanandroid.repository.model
 
+import java.io.Serializable
+
 data class TreeBean(
     val children: List<TreeBean>,
     val courseId: Int,
@@ -9,5 +11,5 @@ data class TreeBean(
     val parentChapterId: Int,
     val userControlSetTop: Boolean,
     val visible: Int
-)
+):Serializable
 

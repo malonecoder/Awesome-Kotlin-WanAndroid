@@ -33,12 +33,10 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
         return findViewById<View>(id) as T
     }
 
-    protected abstract fun getLayoutID():Int
-
     override fun setContentView(@LayoutRes layoutResID: Int) {
 
         mBaseView = layoutInflater.inflate(R.layout.activity_base, null, false)
-        contentsView = layoutInflater.inflate(getLayoutID(), null, false)
+        contentsView = layoutInflater.inflate(layoutResID, null, false)
 
         // content
         val params =
@@ -47,6 +45,9 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
         val mContainer = mBaseView.findViewById<View>(R.id.container) as RelativeLayout
         mContainer.addView(contentsView)
         window.setContentView(mBaseView)
+
+
+        errorView = (findViewById<View>(R.id.vs_error_refresh) as ViewStub).inflate()
 
         // 设置透明状态栏，兼容4.4
         //        StatusBarUtil.setColor(this, CommonUtils.getColor(R.color.colorTheme), 0);
@@ -145,7 +146,7 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
             // 点击加载失败布局
             errorView.setOnClickListener {
                 showLoading()
-                onRefresh()
+                onRetry()
             }
         }
         if (contentsView.visibility != View.GONE) {
@@ -156,7 +157,7 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
     /**
      * 失败后点击刷新
      */
-    protected fun onRefresh() {
+    protected fun onRetry() {
 
     }
 

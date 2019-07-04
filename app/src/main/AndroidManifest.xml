@@ -25,6 +25,7 @@
                 android:launchMode="singleTask"
                 android:screenOrientation="portrait"
                 android:name=".utils.webview.WebViewActivity"></activity>
+        <activity android:name=".ui.TagArticleActivity"></activity>
     </application>
 
 </manifest>

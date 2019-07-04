@@ -1,34 +1,33 @@
 package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
 import com.lxm.module_library.base.BaseFragment
-import com.lxm.module_library.utils.RefreshHelper
 import com.lxm.module_library.xrecycleview.XRecyclerView
 import com.lxm.wanandroid.R
-import com.lxm.wanandroid.repository.model.ArticleBean
-import com.lxm.wanandroid.repository.model.Banner
 import com.lxm.wanandroid.repository.model.Status
 import com.lxm.wanandroid.repository.model.TreeBean
-import com.lxm.wanandroid.ui.base.OnItemClickListener
-import com.lxm.wanandroid.utils.GlideUtil
-import com.lxm.wanandroid.utils.webview.WebViewActivity
-import com.lxm.wanandroid.viewmodel.ArticleViewModel
 import com.lxm.wanandroid.viewmodel.TreeViewModel
-import com.zhouwei.mzbanner.holder.MZViewHolder
+import com.zhy.view.flowlayout.FlowLayout
 import kotlinx.android.synthetic.main.article_fragment.*
 
 class TreeFragment : BaseFragment<TreeViewModel>() {
 
     private val mAdapter: TreeAdapter by lazy {
-        TreeAdapter()
+        TreeAdapter(itemClickListener)
     }
+    private val itemClickListener: TreeAdapter.OnItemNavigationClickListener = object :
+        TreeAdapter.OnItemNavigationClickListener {
 
+        override fun itemClick(view: View, position: Int, parent: FlowLayout, children: List<TreeBean>) {
+            val intent = Intent(parent.context, TagArticleActivity::class.java)
+            intent.putExtra("TagBean", children[position])
+            parent.context.startActivity(intent)
+        }
+    }
     override fun getLayoutID(): Int {
         return R.layout.tree_fragment
     }
@@ -70,12 +69,6 @@ class TreeFragment : BaseFragment<TreeViewModel>() {
                 Status.ERROR -> showError()
             }
         })
-
-        mAdapter.setOnItemClickListener(object : OnItemClickListener<TreeBean> {
-            override fun onClick(t: TreeBean, position: Int) {
-//                WebViewActivity.loadUrl(activity, t.link, t.title)
-            }
-        })
     }
 
     override fun onRetry() {
@@ -94,4 +87,5 @@ class TreeFragment : BaseFragment<TreeViewModel>() {
             mAdapter.notifyDataSetChanged()
         })
     }
+
 }

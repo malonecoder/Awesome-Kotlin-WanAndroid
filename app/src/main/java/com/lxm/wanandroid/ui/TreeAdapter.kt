@@ -1,5 +1,9 @@
 package com.lxm.wanandroid.ui
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +15,10 @@ import com.lxm.wanandroid.ui.base.BaseRecyclerViewHolder
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
+import java.util.*
 
 
-class TreeAdapter : BaseRecyclerAdapter<TreeBean>() {
+class TreeAdapter(var itemClickListener: OnItemNavigationClickListener) : BaseRecyclerAdapter<TreeBean>() {
     override fun getItemLayout(): Int {
         return R.layout.item_tree
     }
@@ -38,12 +43,12 @@ class TreeAdapter : BaseRecyclerAdapter<TreeBean>() {
             ): View {
                 val textView = View.inflate(parent.context, R.layout.item_tree_tag, null) as TextView
                 textView.text = o.name
+                textView.setBackgroundDrawable(getBackGround())
                 return textView
             }
         }
         flowLayout?.setOnTagClickListener { view, position, parent ->
-            val childrenBean = treeBean.children.get(position)
-//            CategoryDetailActivity.start(view.getContext(), childrenBean.id, treeBean)
+            itemClickListener?.itemClick(view, position, parent,treeBean.children)
             true
         }
     }
@@ -65,6 +70,20 @@ class TreeAdapter : BaseRecyclerAdapter<TreeBean>() {
         }
 
         companion object
+    }
+
+    private fun getBackGround(): Drawable {
+        val drawable = GradientDrawable()
+        drawable.cornerRadius = 16f
+        drawable.setColor(Color.rgb(Random().nextInt(255), Random().nextInt(255), Random().nextInt(255)))
+        return drawable
+    }
+
+    interface OnItemNavigationClickListener {
+        /**
+         *单击事件
+         */
+        fun itemClick(view: View, position: Int, parent: FlowLayout, children: List<TreeBean>)
     }
 
 }
