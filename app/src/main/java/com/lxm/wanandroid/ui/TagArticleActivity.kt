@@ -26,16 +26,17 @@ class TagArticleActivity: BaseActivity<CategoryViewModel>() {
         setContentView(R.layout.category_activity)
         initView()
         treeBean = intent.getSerializableExtra("TagBean") as TreeBean
+        setTitle(treeBean.name)
         getCategory(treeBean.id)
     }
 
 
     private fun initView() {
         swipeLayout.setOnRefreshListener {
+            swipeLayout.isRefreshing = true
             viewModel.mPage = 0
             getCategory(treeBean.id)
         }
-        swipeLayout.isRefreshing = true
         RefreshHelper.init(recyclerView, false)
         recyclerView.adapter = mAdapter
         recyclerView.setLoadingListener(object : XRecyclerView.LoadingListener {
@@ -48,10 +49,11 @@ class TagArticleActivity: BaseActivity<CategoryViewModel>() {
             override fun onRefresh() {
             }
         })
+        showLoading()
         viewModel.loadStatus.observe(this, Observer {
 
             when (it?.status) {
-                Status.ERROR -> showError()
+//                Status.ERROR -> showError()
                 Status.SUCCESS -> showContentView()
             }
         })
@@ -59,9 +61,11 @@ class TagArticleActivity: BaseActivity<CategoryViewModel>() {
             if (it == null) {
                 return@Observer
             }
+            if(viewModel.mPage ==0){
+                mAdapter.mutableList.clear()
+            }
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
-
             mAdapter.addDataAll(it.data?.datas!!)
             val positionStart = mAdapter.itemCount + 2
             mAdapter.notifyItemRangeInserted(positionStart, it.data?.datas?.size!!)

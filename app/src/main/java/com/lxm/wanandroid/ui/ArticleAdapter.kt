@@ -20,13 +20,16 @@ class ArticleAdapter : BaseRecyclerAdapter<ArticleBean>() {
         holder.setValue(R.id.tv_time, articleBean.niceDate)
         holder.setValue(R.id.tv_author, articleBean.author)
         holder.setValue(R.id.iv_image, articleBean.envelopePic)
-        holder.setValue(R.id.tv_tag_name, articleBean.superChapterName+"/"+ articleBean.chapterName)
-        val isNewImageView: ImageView  = holder.getView(R.id.iv_new) as ImageView
-        if(articleBean.fresh){
+        holder.setValue(R.id.tv_tag_name, articleBean.chapterName)
+        val isNewImageView: ImageView = holder.getView(R.id.iv_new) as ImageView
+        if (articleBean.fresh) {
             isNewImageView.visibility = View.VISIBLE
-        }else{
+        } else {
             isNewImageView.visibility = View.GONE
         }
     }
 
+    override fun getItemCount(): Int {
+        return mutableList.size
+    }
 }

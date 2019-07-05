@@ -77,6 +77,10 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
             if (it == null) {
                 return@Observer
             }
+
+            if(viewModel.mPage ==0){
+                mAdapter.mutableList.clear()
+            }
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
 
