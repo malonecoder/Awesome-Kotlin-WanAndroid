@@ -2,7 +2,6 @@ package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.os.PersistableBundle
 import com.lxm.module_library.base.BaseActivity
 import com.lxm.module_library.utils.RefreshHelper
 import com.lxm.module_library.xrecycleview.XRecyclerView
@@ -10,6 +9,7 @@ import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.ArticleBean
 import com.lxm.wanandroid.repository.model.Status
 import com.lxm.wanandroid.repository.model.TreeBean
+import com.lxm.wanandroid.ui.adapter.ArticleAdapter
 import com.lxm.wanandroid.ui.base.OnItemClickListener
 import com.lxm.wanandroid.utils.webview.WebViewActivity
 import com.lxm.wanandroid.viewmodel.CategoryViewModel

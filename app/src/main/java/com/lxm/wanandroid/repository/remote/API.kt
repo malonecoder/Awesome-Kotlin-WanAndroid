@@ -44,5 +44,13 @@ interface API{
 
     @GET("/article/list/{page}/json")
     fun getCategory(@Path(value = "page")page:Int,@Query(value = "cid")cid:Int):Observable<HttpResponse<ArticleResponseBody<ArticleBean>>>
+    /*
+  *
+  * 获取知识体系目录
+  * /navi/json
+  * */
+
+    @GET("/navi/json")
+    fun getNavigation():Observable<HttpResponse<List<Navigation>>>
 
 }

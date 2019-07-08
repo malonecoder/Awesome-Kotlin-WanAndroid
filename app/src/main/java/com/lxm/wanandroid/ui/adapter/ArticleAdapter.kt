@@ -1,4 +1,4 @@
-package com.lxm.wanandroid.ui
+package com.lxm.wanandroid.ui.adapter
 
 
 import android.view.View

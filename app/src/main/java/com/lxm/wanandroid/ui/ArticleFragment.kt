@@ -13,6 +13,7 @@ import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.ArticleBean
 import com.lxm.wanandroid.repository.model.Banner
 import com.lxm.wanandroid.repository.model.Status
+import com.lxm.wanandroid.ui.adapter.ArticleAdapter
 import com.lxm.wanandroid.ui.base.OnItemClickListener
 import com.lxm.wanandroid.utils.GlideUtil
 import com.lxm.wanandroid.utils.webview.WebViewActivity

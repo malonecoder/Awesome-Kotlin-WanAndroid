@@ -1,32 +1,31 @@
 package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.lxm.module_library.base.BaseFragment
 import com.lxm.module_library.xrecycleview.XRecyclerView
 import com.lxm.wanandroid.R
+import com.lxm.wanandroid.repository.model.ArticleBean
 import com.lxm.wanandroid.repository.model.Status
-import com.lxm.wanandroid.repository.model.TreeBean
-import com.lxm.wanandroid.ui.adapter.TreeAdapter
-import com.lxm.wanandroid.viewmodel.TreeViewModel
+import com.lxm.wanandroid.ui.adapter.NaviAdapter
+import com.lxm.wanandroid.utils.webview.WebViewActivity
+import com.lxm.wanandroid.viewmodel.NaviViewModel
 import com.zhy.view.flowlayout.FlowLayout
 import kotlinx.android.synthetic.main.article_fragment.*
 
-class TreeFragment : BaseFragment<TreeViewModel>() {
+class NavigationFragment : BaseFragment<NaviViewModel>() {
 
-    private val mAdapter: TreeAdapter by lazy {
-        TreeAdapter(itemClickListener)
+    private val mAdapter: NaviAdapter by lazy {
+        NaviAdapter(itemClickListener)
     }
-    private val itemClickListener: TreeAdapter.OnItemNavigationClickListener = object :
-        TreeAdapter.OnItemNavigationClickListener {
+    private val itemClickListener: NaviAdapter.OnItemNavigationClickListener = object :
+        NaviAdapter.OnItemNavigationClickListener {
 
-        override fun itemClick(view: View, position: Int, parent: FlowLayout, children: List<TreeBean>) {
-            val intent = Intent(parent.context, TagArticleActivity::class.java)
-            intent.putExtra("TagBean", children[position])
-            parent.context.startActivity(intent)
+        override fun itemClick(view: View, position: Int, parent: FlowLayout, articles: List<ArticleBean>) {
+            var article = articles[position]
+            WebViewActivity.loadUrl(activity, article.link, article.title)
         }
     }
     override fun getLayoutID(): Int {
@@ -34,8 +33,8 @@ class TreeFragment : BaseFragment<TreeViewModel>() {
     }
 
     companion object {
-        fun getInstance(): TreeFragment {
-            return TreeFragment()
+        fun getInstance(): NavigationFragment {
+            return NavigationFragment()
         }
     }
 
@@ -81,10 +80,10 @@ class TreeFragment : BaseFragment<TreeViewModel>() {
     }
 
     private fun getTreeList() {
-        this.viewModel.getTrees().observe(this@TreeFragment, Observer {
+        this.viewModel.getVavigations().observe(this@NavigationFragment, Observer {
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
-            it?.let { list -> mAdapter.addDataAll(list) }
+            it?.let { list -> mAdapter.addDataAll(it) }
             mAdapter.notifyDataSetChanged()
         })
     }
