@@ -18,7 +18,7 @@ class ArticleViewModel : BaseViewModel() {
 
     fun getHomeList(): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
         loadStatus.postValue(Resource.loading())
-        val subscribe = RetrofitClient.getInstance(RetrofitClient.BASE_URL).getArticleList(mPage)
+        val subscribe = RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getArticleList(mPage)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<ArticleResponseBody<ArticleBean>>> {
                 if(it.data != null){
@@ -39,7 +39,7 @@ class ArticleViewModel : BaseViewModel() {
     }
 
     fun getBanners(): MutableLiveData<HttpResponse<List<Banner>>> {
-        val subscribe = RetrofitClient.getInstance(RetrofitClient.BASE_URL).getHomeBanner()
+        val subscribe = RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getHomeBanner()
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<List<Banner>>>{
                 banner.postValue(it)

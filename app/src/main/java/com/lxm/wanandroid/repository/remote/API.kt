@@ -62,4 +62,14 @@ interface API{
     @GET("/api/data/{type}/{page_size}/{page}")
     fun getWelfare(@Path("type") id: String,  @Path("page_size") page_size: Int,@Path("page") page: Int): Observable<WelfareResponse>
 
+
+    /*
+     *
+    * 获取首页新闻列表
+    *
+    * */
+
+    @GET("/article/listproject/{page}/json")
+    fun getProjectList(@Path(value = "page")page:Int):Observable<HttpResponse<ArticleResponseBody<ArticleBean>>>
+
 }

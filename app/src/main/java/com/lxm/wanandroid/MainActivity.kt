@@ -11,10 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.lxm.module_library.statusbar.StatusBarUtil
-import com.lxm.wanandroid.ui.ArticleFragment
-import com.lxm.wanandroid.ui.TreeFragment
-import com.lxm.wanandroid.ui.NavigationFragment
-import com.lxm.wanandroid.ui.WelfareFragment
+import com.lxm.wanandroid.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -50,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             it.add(ArticleFragment.getInstance())
             it.add(TreeFragment.getInstance())
             it.add(NavigationFragment.getInstance())
-            it.add(ArticleFragment.getInstance())
+            it.add(ProjectFragment.getInstance())
             it.add(WelfareFragment.getInstance())
         }
 

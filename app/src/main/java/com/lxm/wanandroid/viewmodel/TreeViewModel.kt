@@ -13,7 +13,7 @@ class TreeViewModel : BaseViewModel() {
         MutableLiveData<Resource<String>>()
     }
     fun getTrees(): MutableLiveData<List<TreeBean>> {
-        RetrofitClient.getInstance(RetrofitClient.BASE_URL).getTrees()
+        RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getTrees()
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe({
                 treeList.postValue(it.data)

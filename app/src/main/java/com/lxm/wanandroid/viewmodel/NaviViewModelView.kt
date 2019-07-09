@@ -1,12 +1,10 @@
 package com.lxm.wanandroid.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import androidx.navigation.NavAction
 import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.Navigation
 import com.lxm.wanandroid.repository.model.Resource
-import com.lxm.wanandroid.repository.model.TreeBean
 import com.lxm.wanandroid.repository.remote.RetrofitClient
 
 class NaviViewModelView : BaseViewModel() {
@@ -15,7 +13,7 @@ class NaviViewModelView : BaseViewModel() {
         MutableLiveData<Resource<String>>()
     }
     fun getVavigations(): MutableLiveData<List<Navigation>> {
-        RetrofitClient.getInstance(RetrofitClient.BASE_URL).getNavigation()
+        RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getNavigation()
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe({
                 naviList.postValue(it.data)

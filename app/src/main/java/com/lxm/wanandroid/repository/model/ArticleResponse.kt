@@ -59,7 +59,7 @@ data class ArticleBean(var apkLink: String? = null,
                        var author: String? = null,
                        var chapterId: Int = 0,
                        var chapterName: String? = null,
-                       var isCollect: Boolean = false,
+                       var collect: Boolean = false,
                        var courseId: Int = 0,
                        var desc: String? = null,
                        var envelopePic: String? = null,
@@ -77,10 +77,10 @@ data class ArticleBean(var apkLink: String? = null,
                        var userId: Int = 0,
                        var visible: Int = 0,
                        var zan: Int = 0,
-                       var tags: List<*>? = null)
+                       var tags: List<Project>? = null)
 
 
-
+data class Project(var name:String?,var url:String?)
 
 
 

@@ -7,16 +7,17 @@ import com.lxm.wanandroid.repository.model.*
 import com.lxm.wanandroid.repository.remote.RetrofitClient
 import io.reactivex.functions.Consumer
 
-class CategoryViewModel: BaseViewModel() {
+class ProjectViewModel : BaseViewModel() {
+
     var mPage = 0
     val pagedList = MutableLiveData<HttpResponse<ArticleResponseBody<ArticleBean>>>()
     val loadStatus by lazy {
         MutableLiveData<Resource<String>>()
     }
 
-    fun getCategory(id: Int): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
+    fun getProjects(): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
         loadStatus.postValue(Resource.loading())
-        val subscribe = RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getCategory(mPage,id)
+        val subscribe = RetrofitClient.getInstance(RetrofitClient.WAN_BASE_URL).getProjectList(mPage)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<ArticleResponseBody<ArticleBean>>> {
                 if(it.data != null){
@@ -35,5 +36,4 @@ class CategoryViewModel: BaseViewModel() {
         addDisposable(subscribe)
         return Listing(pagedList,loadStatus)
     }
-
 }

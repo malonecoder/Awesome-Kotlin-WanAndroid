@@ -4,8 +4,8 @@ import com.lxm.module_library.helper.RetrofitCreateHelper
 
 
 object RetrofitClient {
-    val BASE_URL = "https://www.wanandroid.com"
-    val GAN_BASE_URL = "https://gank.io"
+    const val WAN_BASE_URL = "https://www.wanandroid.com"
+    const val GAN_BASE_URL = "https://gank.io"
 
     private var api: API? = null
     fun getInstance(type: String): API {
