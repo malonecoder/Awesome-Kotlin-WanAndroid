@@ -1,25 +1,27 @@
 package com.lxm.wanandroid.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
+import androidx.navigation.NavAction
 import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
+import com.lxm.wanandroid.repository.model.Navigation
 import com.lxm.wanandroid.repository.model.Resource
 import com.lxm.wanandroid.repository.model.TreeBean
 import com.lxm.wanandroid.repository.remote.RetrofitClient
 
-class TreeViewModel : BaseViewModel() {
-    private val treeList = MutableLiveData<List<TreeBean>>()
+class NaviViewModelView : BaseViewModel() {
+    private val naviList = MutableLiveData<List<Navigation>>()
     val loadStatus by lazy {
         MutableLiveData<Resource<String>>()
     }
-    fun getTrees(): MutableLiveData<List<TreeBean>> {
-        RetrofitClient.getInstance(RetrofitClient.BASE_URL).getTrees()
+    fun getVavigations(): MutableLiveData<List<Navigation>> {
+        RetrofitClient.getInstance(RetrofitClient.BASE_URL).getNavigation()
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe({
-                treeList.postValue(it.data)
+                naviList.postValue(it.data)
             }, {
                 loadStatus.postValue(Resource.error())
             })
-        return treeList
+        return naviList
     }
 }

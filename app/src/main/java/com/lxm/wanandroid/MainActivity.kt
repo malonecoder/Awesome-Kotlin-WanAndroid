@@ -14,10 +14,11 @@ import com.lxm.module_library.statusbar.StatusBarUtil
 import com.lxm.wanandroid.ui.ArticleFragment
 import com.lxm.wanandroid.ui.TreeFragment
 import com.lxm.wanandroid.ui.NavigationFragment
+import com.lxm.wanandroid.ui.WelfareFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-const val PHOTO_URL = "http://uploads.5068.com/allimg/1806/189-1P605160Z6-50.jpg"
+const val PHOTO_URL = "http://cdn.duitang.com/uploads/blog/201404/22/20140422142715_8GtUk.thumb.600_0.jpeg"
 class MainActivity : AppCompatActivity() {
 
     private val mTitles by lazy {
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             it.add(TreeFragment.getInstance())
             it.add(NavigationFragment.getInstance())
             it.add(ArticleFragment.getInstance())
-            it.add(ArticleFragment.getInstance())
+            it.add(WelfareFragment.getInstance())
         }
 
         mAdapter.setFragments(mFragments)

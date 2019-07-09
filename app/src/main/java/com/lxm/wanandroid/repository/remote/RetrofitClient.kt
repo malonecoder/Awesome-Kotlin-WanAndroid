@@ -3,20 +3,13 @@ package com.lxm.wanandroid.repository.remote
 import com.lxm.module_library.helper.RetrofitCreateHelper
 
 
-object RetrofitClient{
+object RetrofitClient {
+    val BASE_URL = "https://www.wanandroid.com"
+    val GAN_BASE_URL = "https://gank.io"
 
     private var api: API? = null
-
-
-    val instance: API
-    get() {
-        if(api == null){
-            synchronized(RetrofitClient::class.java){
-                if(api == null){
-                    api = RetrofitCreateHelper.createApi(API::class.java, BASE_URL)
-                }
-            }
-        }
+    fun getInstance(type: String): API {
+        api = RetrofitCreateHelper.createApi(API::class.java, type)
         return api!!
     }
 }

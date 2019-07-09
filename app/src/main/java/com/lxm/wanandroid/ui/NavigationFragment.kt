@@ -11,11 +11,11 @@ import com.lxm.wanandroid.repository.model.ArticleBean
 import com.lxm.wanandroid.repository.model.Status
 import com.lxm.wanandroid.ui.adapter.NaviAdapter
 import com.lxm.wanandroid.utils.webview.WebViewActivity
-import com.lxm.wanandroid.viewmodel.NaviViewModel
+import com.lxm.wanandroid.viewmodel.NaviViewModelView
 import com.zhy.view.flowlayout.FlowLayout
 import kotlinx.android.synthetic.main.article_fragment.*
 
-class NavigationFragment : BaseFragment<NaviViewModel>() {
+class NavigationFragment : BaseFragment<NaviViewModelView>() {
 
     private val mAdapter: NaviAdapter by lazy {
         NaviAdapter(itemClickListener)

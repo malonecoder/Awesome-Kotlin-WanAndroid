@@ -7,7 +7,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 
-const val BASE_URL = "https://www.wanandroid.com"
+
+
 interface API{
 
 
@@ -37,20 +38,28 @@ interface API{
     fun getTrees():Observable<HttpResponse<List<TreeBean>>>
 
     /*
-  *
-  * 获取知识体系目录
-  * /article/list/0/json?cid=60
-  * */
+     *
+     * 获取知识体系目录
+     * /article/list/0/json?cid=60
+     * */
 
     @GET("/article/list/{page}/json")
     fun getCategory(@Path(value = "page")page:Int,@Query(value = "cid")cid:Int):Observable<HttpResponse<ArticleResponseBody<ArticleBean>>>
     /*
-  *
-  * 获取知识体系目录
-  * /navi/json
-  * */
+     *
+     * 获取知识体系目录
+     * /navi/json
+     * */
 
     @GET("/navi/json")
     fun getNavigation():Observable<HttpResponse<List<Navigation>>>
+
+    /*
+     *
+     * 获取Gan福利
+     * /navi/json
+     * */
+    @GET("/api/data/{type}/{page_size}/{page}")
+    fun getWelfare(@Path("type") id: String,  @Path("page_size") page_size: Int,@Path("page") page: Int): Observable<WelfareResponse>
 
 }

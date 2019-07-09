@@ -20,15 +20,15 @@ object RefreshHelper {
         recyclerView.setPullRefreshEnabled(false)
         recyclerView.clearHeader()
         recyclerView.itemAnimator = null
-        val itemDecoration = MyDividerItemDecoration(
-            recyclerView.context,
-            DividerItemDecoration.VERTICAL,
-            false,
-            isShowFirstDivider,
-            isShowSecondDivider
-        )
-        itemDecoration.setDrawable(ContextCompat.getDrawable(recyclerView.context, R.drawable.shape_line)!!)
-        recyclerView.addItemDecoration(itemDecoration)
+//        val itemDecoration = MyDividerItemDecoration(
+//            recyclerView.context,
+//            DividerItemDecoration.VERTICAL,
+//            false,
+//            isShowFirstDivider,
+//            isShowSecondDivider
+//        )
+//        itemDecoration.setDrawable(ContextCompat.getDrawable(recyclerView.context, R.drawable.shape_line)!!)
+//        recyclerView.addItemDecoration(itemDecoration)
     }
 }
 

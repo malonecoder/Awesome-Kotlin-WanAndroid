@@ -9,6 +9,7 @@
             android:layout_height="match_parent">
 
         <com.lxm.module_library.xrecycleview.XRecyclerView
+                android:background="#EEEEEE"
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

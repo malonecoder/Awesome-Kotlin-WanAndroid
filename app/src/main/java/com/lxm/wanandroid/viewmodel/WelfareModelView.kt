@@ -1,27 +1,29 @@
 package com.lxm.wanandroid.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import androidx.navigation.NavAction
 import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
-import com.lxm.wanandroid.repository.model.Navigation
 import com.lxm.wanandroid.repository.model.Resource
-import com.lxm.wanandroid.repository.model.TreeBean
+import com.lxm.wanandroid.repository.model.WelfareResponse
+import com.lxm.wanandroid.repository.remote.API
 import com.lxm.wanandroid.repository.remote.RetrofitClient
+const val PAGE_SIZE = 20
+class WelfareModelView : BaseViewModel() {
+    private val welfare = MutableLiveData<WelfareResponse>()
+    var mPage = 0
 
-class NaviViewModel : BaseViewModel() {
-    private val naviList = MutableLiveData<List<Navigation>>()
     val loadStatus by lazy {
         MutableLiveData<Resource<String>>()
     }
-    fun getVavigations(): MutableLiveData<List<Navigation>> {
-        RetrofitClient.instance.getNavigation()
+    fun getWelfare(): MutableLiveData<WelfareResponse> {
+
+        RetrofitClient.getInstance(RetrofitClient.GAN_BASE_URL).getWelfare("福利",PAGE_SIZE,mPage)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe({
-                naviList.postValue(it.data)
+                welfare.postValue(it)
             }, {
                 loadStatus.postValue(Resource.error())
             })
-        return naviList
+        return welfare
     }
 }

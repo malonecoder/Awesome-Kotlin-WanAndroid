@@ -16,7 +16,7 @@ class CategoryViewModel: BaseViewModel() {
 
     fun getCategory(id: Int): Listing<HttpResponse<ArticleResponseBody<ArticleBean>>> {
         loadStatus.postValue(Resource.loading())
-        val subscribe = RetrofitClient.instance.getCategory(mPage,id)
+        val subscribe = RetrofitClient.getInstance(RetrofitClient.BASE_URL).getCategory(mPage,id)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe(Consumer<HttpResponse<ArticleResponseBody<ArticleBean>>> {
                 if(it.data != null){
