@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WanAndroidKotlin</string>
+    <string name="navigation_open">打开</string>
+    <string name="navigation_close">关闭</string>
 </resources>

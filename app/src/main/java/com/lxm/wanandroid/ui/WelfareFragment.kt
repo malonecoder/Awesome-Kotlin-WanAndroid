@@ -12,12 +12,15 @@ import com.lxm.module_library.base.BaseFragment
 import com.lxm.module_library.xrecycleview.XRecyclerView
 import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.Status
+import com.lxm.wanandroid.repository.model.Welfare
 import com.lxm.wanandroid.ui.adapter.WelfareAdapter
+import com.lxm.wanandroid.ui.base.OnItemClickListener
 import com.lxm.wanandroid.viewmodel.WelfareModelView
 import kotlinx.android.synthetic.main.article_fragment.*
 
 class WelfareFragment : BaseFragment<WelfareModelView>() {
 
+    var imageList: ArrayList<String> = ArrayList()
     override fun getLayoutID() = R.layout.article_fragment
 
     private val mAdapter: WelfareAdapter by lazy {
@@ -71,6 +74,14 @@ class WelfareFragment : BaseFragment<WelfareModelView>() {
                 Status.ERROR -> showError()
             }
         })
+
+        mAdapter.setOnItemClickListener(object : OnItemClickListener<Welfare> {
+            override fun onClick(t: Welfare, position: Int) {
+
+                activity?.let { ViewBigImageActivity.startImageList(it, position, imageList) }
+            }
+
+        })
     }
 
     override fun onRetry() {
@@ -83,10 +94,20 @@ class WelfareFragment : BaseFragment<WelfareModelView>() {
 
     private fun getWelfare() {
         this.viewModel.getWelfare().observe(this@WelfareFragment, Observer {
+            if (viewModel.mPage == 0) {
+                imageList.clear()
+                for (item in it?.results!!) {
+                    imageList.add(item.url)
+                }
+            } else {
+                for (item in it?.results!!) {
+                    imageList.add(item.url)
+                }
+            }
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
             viewModel.mPage = viewModel.mPage + 1
-            it?.let { list -> mAdapter.addDataAll(it.results) }
+            it?.let { list -> mAdapter.addDataAll(list.results) }
             mAdapter.notifyDataSetChanged()
         })
     }
