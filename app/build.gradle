@@ -69,7 +69,11 @@ dependencies {
     implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
     //体系flowlayout
     implementation 'com.hyman:flowlayout-lib:1.1.2'
-    //photoview
+    //大图查看
     implementation 'com.github.chrisbanes:PhotoView:1.2'
+    //圆形头像
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    implementation 'com.github.shem8:material-login:2.2.0'
 
 }

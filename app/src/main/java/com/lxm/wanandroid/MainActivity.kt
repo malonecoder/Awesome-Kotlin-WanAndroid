@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 
 
-const val PHOTO_URL = "http://cdn.duitang.com/uploads/blog/201404/22/20140422142715_8GtUk.thumb.600_0.jpeg"
+const val PHOTO_URL = "https://cdn.duitang.com/uploads/blog/201404/22/20140422142715_8GtUk.thumb.600_0.jpeg"
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,13 +41,13 @@ class MainActivity : AppCompatActivity() {
         StatusBarUtil.setColor(this, resources.getColor(R.color.colorTheme), 0)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
         iv_photo.setOnClickListener {
             drawerLayout.openDrawer(Gravity.START)
         }
-        val imageView = navigationView.getHeaderView(0).findViewById<ImageView>(R.id.ivHeadView)
-        val textView = navigationView.getHeaderView(0).findViewById<TextView>(R.id.tvUserName)
-        showPhoto(imageView)
-        showPhoto(iv_photo)
+
+        var textView = navigationView.getHeaderView(0).findViewById<TextView>(R.id.tvUserName)
+        textView.text = "萧兮易水寒"
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
 
