@@ -54,17 +54,17 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHol
 
     fun addData(data: T) {
         mutableList.add(data)
-        notifyItemInserted(mutableList!!.size)
+        notifyItemInserted(mutableList?.size)
     }
 
     fun addDataAll(data: List<T>) {
         mutableList.addAll(data)
-//        notifyItemInserted(mutableList!!.size)
+        notifyItemInserted(mutableList?.size)
     }
 
     fun addAdd(data: T) {
         mutableList.add(data)
-        notifyItemInserted(mutableList!!.size)
+        notifyItemInserted(mutableList?.size)
     }
 
 

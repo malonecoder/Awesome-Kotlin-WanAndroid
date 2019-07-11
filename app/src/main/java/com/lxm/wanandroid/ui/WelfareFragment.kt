@@ -2,7 +2,6 @@ package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +51,7 @@ class WelfareFragment : BaseFragment<WelfareModelView>() {
 
     private fun initView() {
         swipeLayout.setOnRefreshListener {
-            viewModel.mPage = 0
+            viewModel.mPage = 1
             loadData()
         }
         swipeLayout.isRefreshing = true
@@ -62,6 +61,7 @@ class WelfareFragment : BaseFragment<WelfareModelView>() {
         recyclerView.adapter = mAdapter
         recyclerView.setLoadingListener(object : XRecyclerView.LoadingListener {
             override fun onLoadMore() {
+                viewModel.mPage = viewModel.mPage+1
                 getWelfare()
             }
 
@@ -94,20 +94,20 @@ class WelfareFragment : BaseFragment<WelfareModelView>() {
 
     private fun getWelfare() {
         this.viewModel.getWelfare().observe(this@WelfareFragment, Observer {
-            if (viewModel.mPage == 0) {
+            if (viewModel.mPage == 1) {
+                mAdapter.setData(it?.results)
                 imageList.clear()
                 for (item in it?.results!!) {
                     imageList.add(item.url)
                 }
             } else {
+                mAdapter.addDataAll(it?.results!!)
                 for (item in it?.results!!) {
                     imageList.add(item.url)
                 }
             }
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
-            viewModel.mPage = viewModel.mPage + 1
-            it?.let { list -> mAdapter.addDataAll(list.results) }
             mAdapter.notifyDataSetChanged()
         })
     }

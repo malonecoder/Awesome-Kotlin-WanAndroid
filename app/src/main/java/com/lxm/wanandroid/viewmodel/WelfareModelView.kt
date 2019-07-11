@@ -5,18 +5,17 @@ import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.Resource
 import com.lxm.wanandroid.repository.model.WelfareResponse
-import com.lxm.wanandroid.repository.remote.API
 import com.lxm.wanandroid.repository.remote.RetrofitClient
 const val PAGE_SIZE = 20
 class WelfareModelView : BaseViewModel() {
-    private val welfare = MutableLiveData<WelfareResponse>()
-    var mPage = 0
+
+    var mPage = 1
 
     val loadStatus by lazy {
         MutableLiveData<Resource<String>>()
     }
     fun getWelfare(): MutableLiveData<WelfareResponse> {
-
+        val welfare = MutableLiveData<WelfareResponse>()
         RetrofitClient.getInstance(RetrofitClient.GAN_BASE_URL).getWelfare("福利",PAGE_SIZE,mPage)
             .compose(RxHelper.rxSchedulerHelper())
             .subscribe({
