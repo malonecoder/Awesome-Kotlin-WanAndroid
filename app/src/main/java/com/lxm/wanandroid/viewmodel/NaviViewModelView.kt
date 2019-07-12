@@ -5,7 +5,7 @@ import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.Navigation
 import com.lxm.wanandroid.repository.model.Resource
-import com.lxm.wanandroid.repository.remote.RetrofitClient
+import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 
 class NaviViewModelView : BaseViewModel() {
     private val naviList = MutableLiveData<List<Navigation>>()

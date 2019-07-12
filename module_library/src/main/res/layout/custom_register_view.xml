@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.lxm.module_library.materialLogin.DefaultRegisterView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:registerActionText="SIGN UP"
+        app:registerHint="UserName"
+        app:registerIcon="@drawable/ic_person_add_white_24dp"
+        app:registerPasswordHint="Password"
+        app:registerRepeatPasswordHint="Repeat Password"
+        app:registerTextColor="@color/colorWhite"
+        app:registerTitle="Join us"/>

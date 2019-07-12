@@ -1,5 +1,6 @@
 package com.lxm.wanandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.lxm.module_library.statusbar.StatusBarUtil
+import com.lxm.module_library.utils.AppUtils.context
 import com.lxm.wanandroid.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
@@ -41,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         StatusBarUtil.setColor(this, resources.getColor(R.color.colorTheme), 0)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
         iv_photo.setOnClickListener {
             drawerLayout.openDrawer(Gravity.START)
         }
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
 
                 R.id.colletion -> {
+                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    startActivity(intent)
                 }
                 R.id.about -> {
 

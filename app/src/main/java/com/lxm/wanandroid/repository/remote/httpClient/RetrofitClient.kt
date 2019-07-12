@@ -1,4 +1,4 @@
-package com.lxm.wanandroid.repository.remote
+package com.lxm.wanandroid.repository.remote.httpClient
 
 import com.lxm.module_library.helper.RetrofitCreateHelper
 

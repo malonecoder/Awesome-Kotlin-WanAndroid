@@ -5,7 +5,7 @@ import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.Resource
 import com.lxm.wanandroid.repository.model.WelfareResponse
-import com.lxm.wanandroid.repository.remote.RetrofitClient
+import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 const val PAGE_SIZE = 20
 class WelfareModelView : BaseViewModel() {
 

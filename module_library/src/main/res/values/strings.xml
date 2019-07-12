@@ -15,4 +15,12 @@
     <string name="actionbar_webview_refresh">刷新</string>
     <string name="actionbar_webview_collect">添加到收藏</string>
 
+    <string name="login">LOGIN</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="go">GO</string>
+    <string name="register">REGISTER</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="next">NEXT</string>
+
 </resources>

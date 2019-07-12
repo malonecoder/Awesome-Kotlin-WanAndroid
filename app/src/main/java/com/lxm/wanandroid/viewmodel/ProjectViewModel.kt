@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.*
-import com.lxm.wanandroid.repository.remote.RetrofitClient
+import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 import io.reactivex.functions.Consumer
 
 class ProjectViewModel : BaseViewModel() {

@@ -74,6 +74,4 @@ dependencies {
     //圆形头像
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
-    implementation 'com.github.shem8:material-login:2.2.0'
-
 }

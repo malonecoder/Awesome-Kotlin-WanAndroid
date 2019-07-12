@@ -2,13 +2,12 @@ package com.lxm.wanandroid.ui.adapter
 
 
 import android.graphics.Paint
-import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.lxm.wanandroid.R
 import com.lxm.wanandroid.repository.model.ArticleBean
-import com.lxm.wanandroid.repository.remote.RetrofitClient
+import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 import com.lxm.wanandroid.ui.base.BaseRecyclerAdapter
 import com.lxm.wanandroid.ui.base.BaseRecyclerViewHolder
 import com.lxm.wanandroid.utils.webview.WebViewActivity

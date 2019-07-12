@@ -2,7 +2,7 @@
 <resources>
 
 
-    <color name="colorTheme">#ffce3d3a</color>
+    <color name="colorTheme">#343434</color>
     <color name="colorLine">#EBEBEB</color>
     <color name="colorHomeLine">#D4D4D4</color>
     <color name="colorLineDeep">#BBBBBB</color>
@@ -13,4 +13,11 @@
     <color name="colorTitle">#666</color>
     <color name="colorWhite">#ffffffff</color>
     <color name="tabBackground">#777D7D7D</color>
+
+    <color name="material_login_login_color">#343434</color>
+    <color name="material_login_register_color">#11EE69</color>
+    <color name="material_login_login_error_color">#ff5151</color>
+    <color name="material_login_register_error_color">#ffcdce</color>
+    <color name="material_login_login_text_color">#000</color>
+    <color name="material_login_register_text_color">#000</color>
 </resources>

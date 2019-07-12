@@ -5,7 +5,7 @@ import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.Resource
 import com.lxm.wanandroid.repository.model.TreeBean
-import com.lxm.wanandroid.repository.remote.RetrofitClient
+import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 
 class TreeViewModel : BaseViewModel() {
     private val treeList = MutableLiveData<List<TreeBean>>()

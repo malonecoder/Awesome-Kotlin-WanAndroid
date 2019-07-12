@@ -1,0 +1,39 @@
+<resources>
+
+    <style name="MaterialLoginTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+    <style name="MaterialLoginTheme.SelectableItemTheme">
+        <item name="colorControlHighlight">@color/material_login_register_color</item>
+    </style>
+    <style name="MaterialLoginTheme.SelectableItemBackground">
+        <item name="android:theme">@style/MaterialLoginTheme.SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="MaterialLoginTheme.TextAppearanceRegister">
+        <item name="android:textColor">@color/material_login_login_color</item>
+        <item name="colorControlNormal">@color/material_login_login_color</item>
+        <item name="android:textColorHint">@color/material_login_login_color</item>
+        <item name="colorControlActivated">@color/material_login_login_color</item>
+        <item name="colorControlHighlight">@color/material_login_login_color</item>
+    </style>
+
+    <style name="MaterialLoginTheme.TextAppearanceLogin">
+        <item name="android:textColor">@color/material_login_register_color</item>
+        <item name="colorControlNormal">@color/material_login_register_color</item>
+        <item name="android:textColorHint">@color/material_login_register_color</item>
+        <item name="colorControlActivated">@color/material_login_register_color</item>
+        <item name="colorControlHighlight">@color/material_login_register_color</item>
+    </style>
+
+    <style name="MaterialLoginTheme.TextAppearanceLoginError" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/material_login_login_error_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MaterialLoginTheme.TextAppearanceRegisterError" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/material_login_register_error_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

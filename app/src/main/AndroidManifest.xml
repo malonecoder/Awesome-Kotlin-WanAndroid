@@ -28,6 +28,7 @@
                 android:name=".utils.webview.WebViewActivity"></activity>
         <activity android:name=".ui.TagArticleActivity"></activity>
         <activity android:name=".ui.ViewBigImageActivity"></activity>
+        <activity android:name=".ui.LoginActivity"></activity>
     </application>
 
 </manifest>
