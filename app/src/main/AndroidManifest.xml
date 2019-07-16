@@ -29,6 +29,7 @@
         <activity android:name=".ui.TagArticleActivity"></activity>
         <activity android:name=".ui.ViewBigImageActivity"></activity>
         <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.CollectActivity"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerViewHolder>() {
 
-    private lateinit var context: Context
+    lateinit var context: Context
     var layoutRes: Int = 0
     var mutableList: MutableList<T> = mutableListOf()
     var listener: OnItemClickListener<T>? = null

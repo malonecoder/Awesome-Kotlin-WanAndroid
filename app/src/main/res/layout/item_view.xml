@@ -70,12 +70,22 @@
                     android:lineSpacingExtra="4dp"
                     android:maxLines="2"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_collect"
                     app:layout_constraintStart_toEndOf="@+id/iv_image"
                     app:layout_constraintTop_toTopOf="@+id/iv_image"
                     tools:text="内容展示内容展示内容展示内容展示内容展示内容展示内容展示内容展示内容展示内容展示内容展示"/>
 
-
+            <CheckBox
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:button="@drawable/selector_collect_check"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title"
+                    app:layout_constraintTop_toTopOf="@+id/tv_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/ic_un_collect"
+                    android:id="@+id/iv_collect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            />
             <TextView
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"

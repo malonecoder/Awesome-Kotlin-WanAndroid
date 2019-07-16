@@ -17,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.lxm.module_library.statusbar.StatusBarUtil
 import com.lxm.module_library.utils.AppUtils.context
+import com.lxm.module_library.utils.PreferencesUtil
 import com.lxm.wanandroid.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
@@ -53,8 +54,15 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
 
                 R.id.colletion -> {
-                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                    startActivity(intent)
+                    var isLogin: Boolean by PreferencesUtil<Boolean>("login", false)
+                    if (isLogin) {
+                        val intent = Intent(this@MainActivity, CollectActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                    }
+
                 }
                 R.id.about -> {
 

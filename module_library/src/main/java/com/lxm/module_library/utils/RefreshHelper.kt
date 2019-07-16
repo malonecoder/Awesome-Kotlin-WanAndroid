@@ -19,7 +19,6 @@ object RefreshHelper {
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.setPullRefreshEnabled(false)
         recyclerView.clearHeader()
-        recyclerView.itemAnimator = null
 //        val itemDecoration = MyDividerItemDecoration(
 //            recyclerView.context,
 //            DividerItemDecoration.VERTICAL,
