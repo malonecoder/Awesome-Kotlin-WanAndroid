@@ -118,13 +118,11 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
                 break;
             case R.id.actionbar_share:
                 // 分享到
-                String shareText = mTitle + webView.getUrl() + " (分享自云阅)";
-//                ShareUtils.share(WebViewActivity.this, shareText);
                 break;
             case R.id.actionbar_cope:
-                // 复制链接
-//                BaseTools.copy(webView.getUrl());
-//                ToastUtil.showToast("复制成功");
+//                 复制链接
+                BaseTools.copy(webView.getUrl());
+                ToastUtil.showToast("复制成功");
                 break;
             case R.id.actionbar_open:
                 // 打开链接
@@ -135,19 +133,6 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
                 if (webView != null) {
                     webView.reload();
                 }
-                break;
-            case R.id.actionbar_collect:
-                // 添加到收藏
-//                if (UserUtil.isLogin(webView.getContext())) {
-//                    if (SPUtils.getBoolean(Constants.IS_FIRST_COLLECTURL, true)) {
-//                        DialogBuild.show(webView, "网址不同于文章，相同网址可多次进行收藏，且不会显示收藏状态。", "知道了", (DialogInterface.OnClickListener) (dialog, which) -> {
-//                            SPUtils.putBoolean(Constants.IS_FIRST_COLLECTURL, false);
-//                            collectUrl();
-//                        });
-//                    } else {
-//                        collectUrl();
-//                    }
-//                }
                 break;
             default:
                 break;

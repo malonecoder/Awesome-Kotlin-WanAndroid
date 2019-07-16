@@ -75,6 +75,14 @@ interface API{
     fun login(@Field(value = "username")username: String, @Field(value = "password")password: String): Observable<LoginResponse>
 
     /**
+     * 注销
+     * https://www.wanandroid.com/user/logout/json
+     */
+    @FormUrlEncoded
+    @POST("/user/logout/json")
+    fun logout():Observable<HttpResponse<Any>>
+
+    /**
      * 注册
      */
     @FormUrlEncoded

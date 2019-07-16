@@ -1,9 +1,12 @@
 package com.lxm.wanandroid.utils.webview.config;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
+import com.lxm.wanandroid.ui.ViewBigImageActivity;
 
 /**
  * Created by jingbin on 2016/11/17.
@@ -18,10 +21,9 @@ public class ImageClickInterface {
 
     @JavascriptInterface
     public void imageClick(String imgUrl, String hasLink) {
-//        Toast.makeText(context, "----点击了图片", Toast.LENGTH_SHORT).show();
-        // 查看大图
-//        Intent intent = new Intent(context, ViewBigImageActivity.class);
-//        context.startActivity(intent);
+        Toast.makeText(context, "----点击了图片", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(context, ViewBigImageActivity.class);
+        context.startActivity(intent);
         Log.e("----点击了图片 url: ", "" + imgUrl);
     }
 

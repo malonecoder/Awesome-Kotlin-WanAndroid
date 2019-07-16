@@ -1,5 +1,9 @@
 package com.lxm.wanandroid
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -15,11 +19,15 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.lxm.module_library.helper.okhttp.cookies.CookieManger
 import com.lxm.module_library.statusbar.StatusBarUtil
 import com.lxm.module_library.utils.AppUtils.context
 import com.lxm.module_library.utils.PreferencesUtil
+import com.lxm.wanandroid.repository.remote.LoginRepository
 import com.lxm.wanandroid.ui.*
+import com.lxm.wanandroid.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.main_content.*
 
 
@@ -48,13 +56,28 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.openDrawer(Gravity.START)
         }
 
+        var loginViewModel = ViewModelProviders.of(this@MainActivity, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return LoginViewModel(LoginRepository()) as T
+            }
+
+        })[LoginViewModel::class.java]
+
         var textView = navigationView.getHeaderView(0).findViewById<TextView>(R.id.tvUserName)
         textView.text = "萧兮易水寒"
+        val menuItem = navigationView.menu.findItem(R.id.accout) as MenuItem
+        var isLogin: Boolean by PreferencesUtil<Boolean>("login", false)
+        if (isLogin) {
+            menuItem.title = "注销"
+            menuItem.setIcon(R.drawable.ic_logout_menu)
+        }else{
+            menuItem.title = "登陆"
+            menuItem.setIcon(R.drawable.ic_login_menu)
+        }
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
 
                 R.id.colletion -> {
-                    var isLogin: Boolean by PreferencesUtil<Boolean>("login", false)
                     if (isLogin) {
                         val intent = Intent(this@MainActivity, CollectActivity::class.java)
                         startActivity(intent)
@@ -66,6 +89,20 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.about -> {
 
+                }
+                R.id.accout->{
+                    if (isLogin) {
+                        loginViewModel.logoutStatus.observe(this@MainActivity, Observer {
+                            if(it?.errorCode ==0){
+                                //退出成功 清空cookie
+                                isLogin = false
+                               CookieManger.clearAllCookies()
+                            }
+                        })
+                    } else {
+                        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                    }
                 }
                 else -> {
 
@@ -89,6 +126,8 @@ class MainActivity : AppCompatActivity() {
         view_pager.adapter = mAdapter
         view_pager.offscreenPageLimit = 5
         tablayout.setViewPager(view_pager)
+
+
     }
 
     private fun showPhoto(imageView: ImageView) {

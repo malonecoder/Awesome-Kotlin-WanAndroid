@@ -10,4 +10,8 @@
             android:id="@+id/about"
             android:icon="@drawable/ic_about"
             android:title="关于"/>
+    <item
+            android:id="@+id/accout"
+            android:icon="@drawable/ic_login_menu"
+            android:title="登录"/>
 </menu>
