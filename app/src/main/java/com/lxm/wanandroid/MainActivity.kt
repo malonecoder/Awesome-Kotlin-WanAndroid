@@ -14,21 +14,19 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.lxm.module_library.helper.okhttp.cookies.CookieManger
 import com.lxm.module_library.statusbar.StatusBarUtil
-import com.lxm.module_library.utils.AppUtils.context
 import com.lxm.module_library.utils.PreferencesUtil
+import com.lxm.module_library.utils.ToastUtils
 import com.lxm.wanandroid.repository.remote.LoginRepository
 import com.lxm.wanandroid.ui.*
 import com.lxm.wanandroid.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.main_content.*
+
+
 
 
 const val PHOTO_URL = "https://cdn.duitang.com/uploads/blog/201404/22/20140422142715_8GtUk.thumb.600_0.jpeg"
@@ -70,10 +68,18 @@ class MainActivity : AppCompatActivity() {
         if (isLogin) {
             menuItem.title = "注销"
             menuItem.setIcon(R.drawable.ic_logout_menu)
-        }else{
+        } else {
             menuItem.title = "登陆"
             menuItem.setIcon(R.drawable.ic_login_menu)
         }
+
+
+        LiveEventBus.get()
+            .with(LoginActivity.LOGIN_SUCCESS, String::class.java)
+            .observe(this@MainActivity, Observer {
+                menuItem.title = "注销"
+                menuItem.setIcon(R.drawable.ic_logout_menu)
+            })
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
 
@@ -90,13 +96,17 @@ class MainActivity : AppCompatActivity() {
                 R.id.about -> {
 
                 }
-                R.id.accout->{
+                R.id.accout -> {
                     if (isLogin) {
+                        loginViewModel.logout()
                         loginViewModel.logoutStatus.observe(this@MainActivity, Observer {
-                            if(it?.errorCode ==0){
+                            if (it?.errorCode == 0) {
                                 //退出成功 清空cookie
                                 isLogin = false
-                               CookieManger.clearAllCookies()
+                                CookieManger.clearAllCookies()
+                                menuItem.title = "登陆"
+                                menuItem.setIcon(R.drawable.ic_login_menu)
+                                ToastUtils.showToast("注销成功")
                             }
                         })
                     } else {
@@ -128,14 +138,6 @@ class MainActivity : AppCompatActivity() {
         tablayout.setViewPager(view_pager)
 
 
-    }
-
-    private fun showPhoto(imageView: ImageView) {
-        Glide.with(this@MainActivity)
-            .load(PHOTO_URL)
-            .transition(DrawableTransitionOptions.withCrossFade(500))
-            .transform(CircleCrop())
-            .into(iv_photo)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

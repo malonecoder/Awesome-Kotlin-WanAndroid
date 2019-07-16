@@ -78,8 +78,7 @@ interface API{
      * 注销
      * https://www.wanandroid.com/user/logout/json
      */
-    @FormUrlEncoded
-    @POST("/user/logout/json")
+    @GET("/user/logout/json")
     fun logout():Observable<HttpResponse<Any>>
 
     /**

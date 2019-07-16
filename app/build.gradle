@@ -73,5 +73,9 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:1.2'
     //圆形头像
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    //livedataBus
+    implementation 'com.jeremyliao:live-event-bus:1.4.4'
+
+
 
 }

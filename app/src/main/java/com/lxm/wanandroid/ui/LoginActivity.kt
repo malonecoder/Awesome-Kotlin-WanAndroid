@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.lxm.module_library.materialLogin.DefaultLoginView
 import com.lxm.module_library.materialLogin.DefaultRegisterView
 import com.lxm.module_library.materialLogin.MaterialLoginView
@@ -21,7 +22,12 @@ import com.lxm.wanandroid.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.main_content.*
 
 
+
 class LoginActivity : AppCompatActivity() {
+
+    companion object{
+         const val LOGIN_SUCCESS = "loginSuccess"
+    }
 
     private lateinit var model: LoginViewModel
     private lateinit var login: MaterialLoginView
@@ -51,6 +57,13 @@ class LoginActivity : AppCompatActivity() {
                 isLogin = true
                 userName = it.data?.username!!
                 nikeName = it.data?.nickname
+
+                LiveEventBus.get()
+                    .with(LOGIN_SUCCESS)
+                    .post("登录成功")
+
+
+
                 finish()
             } else {
                 ToastUtils.showToast(it?.errorMsg!!, Toast.LENGTH_LONG)
