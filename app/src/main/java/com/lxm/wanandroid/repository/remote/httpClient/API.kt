@@ -72,7 +72,7 @@ interface API{
      */
     @FormUrlEncoded
     @POST("/user/login")
-    fun login(@Field(value = "username")username: String, @Field(value = "password")password: String): Observable<LoginResponse>
+    fun login(@Field(value = "username")username: String, @Field(value = "password")password: String): Observable<HttpResponse<LoginBean>>
 
     /**
      * 注销
@@ -86,7 +86,7 @@ interface API{
      */
     @FormUrlEncoded
     @POST("/user/register")
-    fun register(@Field(value = "username")account: String, @Field(value = "password")password: String, @Field(value = "repassword")rPassword: String): Observable<LoginResponse>
+    fun register(@Field(value = "username")account: String, @Field(value = "password")password: String, @Field(value = "repassword")rPassword: String): Observable<HttpResponse<LoginBean>>
 
     /**
      * 我的收藏列表

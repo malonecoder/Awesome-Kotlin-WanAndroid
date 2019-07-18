@@ -3,14 +3,14 @@ package com.lxm.wanandroid.repository.remote
 import android.arch.lifecycle.MutableLiveData
 import com.lxm.module_library.helper.RxHelper
 import com.lxm.wanandroid.repository.model.HttpResponse
-import com.lxm.wanandroid.repository.model.LoginResponse
+import com.lxm.wanandroid.repository.model.LoginBean
 import com.lxm.wanandroid.repository.remote.httpClient.RetrofitClient
 import io.reactivex.functions.Consumer
 
 class LoginRepository {
 
-    val login = MutableLiveData<LoginResponse>()
-    val register = MutableLiveData<LoginResponse>()
+    val login = MutableLiveData<HttpResponse<LoginBean>>()
+    val register = MutableLiveData<HttpResponse<LoginBean>>()
     val logout = MutableLiveData<HttpResponse<Any>>()
 
     fun login(account: String, password: String) {
@@ -20,7 +20,7 @@ class LoginRepository {
             .subscribe(Consumer {
                 login.value = it
             }, Consumer {
-                login.value = LoginResponse(null, 500, it.message!!)
+                login.value = HttpResponse(null, 500, it.message!!)
             })
 
     }
@@ -32,7 +32,7 @@ class LoginRepository {
             .subscribe(Consumer {
                 register.value = it
             }, Consumer {
-                register.value = LoginResponse(null, 500, it.message!!)
+                register.value = HttpResponse(null, 500, it.message!!)
             })
 
     }

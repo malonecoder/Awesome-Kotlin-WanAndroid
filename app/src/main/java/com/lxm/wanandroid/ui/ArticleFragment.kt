@@ -1,9 +1,6 @@
 package com.lxm.wanandroid.ui
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +18,6 @@ import com.lxm.wanandroid.ui.base.OnItemClickListener
 import com.lxm.wanandroid.utils.GlideUtil
 import com.lxm.wanandroid.utils.webview.WebViewActivity
 import com.lxm.wanandroid.viewmodel.ArticleViewModel
-import com.lxm.wanandroid.viewmodel.CollectViewModel
 import com.zhouwei.mzbanner.holder.MZViewHolder
 import kotlinx.android.synthetic.main.article_banner.*
 import kotlinx.android.synthetic.main.article_fragment.*
@@ -127,7 +123,7 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
 
         override fun onBind(context: Context, position: Int, data: Banner?) {
             data?.let {
-                GlideUtil.displayCircleCorner(mImageView!!, data.imagePath)
+                GlideUtil.displayCircleCorner(mImageView!!, it.imagePath)
             }
         }
     }

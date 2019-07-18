@@ -1,11 +1,5 @@
 package com.lxm.wanandroid.repository.model
 
-data class LoginResponse(
-    val data: LoginBean?,
-    val errorCode: Int,
-    val errorMsg: String
-)
-
 data class LoginBean(
     val admin: Boolean,
     val chapterTops: List<Any>,

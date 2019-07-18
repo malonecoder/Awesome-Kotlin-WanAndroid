@@ -47,36 +47,35 @@ class LoginActivity : AppCompatActivity() {
 
         })[LoginViewModel::class.java]
 
-        model.loginStatus.observe(this@LoginActivity, Observer {
-            if (it?.errorCode == 0) {
-                //存储账号和cookie等信息
-                ToastUtils.showToast("登录成功", Toast.LENGTH_LONG)
-                var isLogin: Boolean by PreferencesUtil<Boolean>("login", false)
-                var userName: String by PreferencesUtil<String>("userName", "Android")
-                var nikeName: String by PreferencesUtil<String>("nikeName", "易水寒")
-                isLogin = true
-                userName = it.data?.username!!
-                nikeName = it.data?.nickname
+        model.apply {
+            loginStatus.observe(this@LoginActivity, Observer {
+                if (it?.errorCode == 0) {
+                    //存储账号和cookie等信息
+                    ToastUtils.showToast("登录成功", Toast.LENGTH_LONG)
+                    var isLogin: Boolean by PreferencesUtil<Boolean>("login", false)
+                    var userName: String by PreferencesUtil<String>("userName", "Android")
+                    var nikeName: String by PreferencesUtil<String>("nikeName", "易水寒")
+                    isLogin = true
+                    userName = it.data?.username!!
+                    nikeName = it.data?.nickname!!
 
-                LiveEventBus.get()
-                    .with(LOGIN_SUCCESS)
-                    .post("登录成功")
-
-
-
-                finish()
-            } else {
-                ToastUtils.showToast(it?.errorMsg!!, Toast.LENGTH_LONG)
-            }
-        })
-        model.registerStauts.observe(this@LoginActivity, Observer {
-            if (it?.errorCode == 0) {
-                login.animateLogin()
-                ToastUtils.showToast("注册成功，请登录", Toast.LENGTH_LONG)
-            } else {
-                ToastUtils.showToast(it?.errorMsg!!, Toast.LENGTH_LONG)
-            }
-        })
+                    LiveEventBus.get()
+                        .with(LOGIN_SUCCESS)
+                        .post("登录成功")
+                    finish()
+                } else {
+                    ToastUtils.showToast(it?.errorMsg!!, Toast.LENGTH_LONG)
+                }
+            })
+            registerStauts.observe(this@LoginActivity, Observer {
+                if (it?.errorCode == 0) {
+                    login.animateLogin()
+                    ToastUtils.showToast("注册成功，请登录", Toast.LENGTH_LONG)
+                } else {
+                    ToastUtils.showToast(it?.errorMsg!!, Toast.LENGTH_LONG)
+                }
+            })
+        }
     }
 
     private fun initView() {
