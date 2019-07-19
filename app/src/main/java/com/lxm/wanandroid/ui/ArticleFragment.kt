@@ -73,7 +73,7 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
                 Status.SUCCESS -> showContentView()
             }
         })
-        this.viewModel.pagedList.observe(this, Observer {
+        viewModel.pagedList.observe(this, Observer {
             if (it == null) {
                 return@Observer
             }

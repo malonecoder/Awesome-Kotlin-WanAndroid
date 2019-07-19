@@ -3,12 +3,10 @@ package com.lxm.wanandroid.ui.adapter
 
 import android.content.Intent
 import android.graphics.Paint
-import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
-import com.lxm.module_library.base.BaseViewModel
 import com.lxm.module_library.utils.PreferencesUtil
 import com.lxm.module_library.utils.ToastUtils
 import com.lxm.wanandroid.R
@@ -30,10 +28,12 @@ class ArticleAdapter : BaseRecyclerAdapter<ArticleBean>() {
 
     override fun onBindViewHoder(holder: BaseRecyclerViewHolder, position: Int) {
         var articleBean: ArticleBean = mutableList?.get(position)
-        holder.setValue(R.id.tv_title, articleBean.title)
-        holder.setValue(R.id.tv_time, articleBean.niceDate)
-        holder.setValue(R.id.tv_author, articleBean.author)
-        holder.setValue(R.id.iv_image, articleBean.envelopePic)
+        with(holder){
+            setValue(R.id.tv_title, articleBean.title)
+            setValue(R.id.tv_time, articleBean.niceDate)
+            setValue(R.id.tv_author, articleBean.author)
+            setValue(R.id.iv_image, articleBean.envelopePic)
+        }
         var tagTextView = holder.getView(R.id.tv_tag_name) as TextView
         tagTextView.text = articleBean.chapterName
         if (articleBean.tags != null && articleBean.tags?.size!! > 0) {

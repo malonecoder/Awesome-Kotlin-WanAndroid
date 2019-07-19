@@ -123,12 +123,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        mFragments.let {
-            it.add(ArticleFragment.getInstance())
-            it.add(TreeFragment.getInstance())
-            it.add(NavigationFragment.getInstance())
-            it.add(ProjectFragment.getInstance())
-            it.add(WelfareFragment.getInstance())
+        mFragments.run {
+            add(ArticleFragment.getInstance())
+            add(TreeFragment.getInstance())
+            add(NavigationFragment.getInstance())
+            add(ProjectFragment.getInstance())
+            add(WelfareFragment.getInstance())
         }
 
         mAdapter.setFragments(mFragments)
