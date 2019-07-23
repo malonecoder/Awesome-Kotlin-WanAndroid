@@ -74,19 +74,20 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
             }
         })
         viewModel.pagedList.observe(this, Observer {
+            swipeLayout.isRefreshing = false
             if (it == null) {
                 return@Observer
             }
-
             if(viewModel.mPage ==0){
-                mAdapter.mutableList.clear()
+                mAdapter.setData(it.data?.datas!!)
+                return@Observer
             }
-            swipeLayout.isRefreshing = false
-            recyclerView.refreshComplete()
-
             mAdapter.addDataAll(it.data?.datas!!)
-            val positionStart = mAdapter.itemCount + 2
-            mAdapter.notifyItemRangeInserted(positionStart, it.data?.datas?.size!!)
+            if(it?.data?.datas?.size!! < it?.data?.size!!){
+                recyclerView.noMoreLoading()
+            }else{
+                recyclerView.refreshComplete()
+            }
         })
 
         mAdapter.setOnItemClickListener(object : OnItemClickListener<ArticleBean> {

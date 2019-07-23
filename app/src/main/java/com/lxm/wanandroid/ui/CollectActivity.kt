@@ -58,15 +58,20 @@ class CollectActivity : BaseActivity<CollectViewModel>() {
             }
         })
         this.viewModel.collectionList.observe(this, Observer {
+            swipeLayout.isRefreshing = false
             if (it == null) {
                 return@Observer
             }
-            if (viewModel.mPage == 0) {
-                mAdapter.mutableList.clear()
+            if(viewModel.mPage ==0){
+                mAdapter.setData(it.data?.datas!!)
+                return@Observer
             }
-            swipeLayout.isRefreshing = false
-            recyclerView.refreshComplete()
             mAdapter.addDataAll(it.data?.datas!!)
+            if(it?.data?.datas?.size!! < it?.data?.size!!){
+                recyclerView.noMoreLoading()
+            }else{
+                recyclerView.refreshComplete()
+            }
         })
 
         mAdapter.setOnItemClickListener(object : OnItemClickListener<ArticleBean> {
