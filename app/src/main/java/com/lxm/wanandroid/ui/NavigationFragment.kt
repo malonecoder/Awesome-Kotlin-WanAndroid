@@ -83,7 +83,7 @@ class NavigationFragment : BaseFragment<NaviViewModelView>() {
         this.viewModel.getVavigations().observe(this@NavigationFragment, Observer {
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
-            it?.let { list -> mAdapter.addDataAll(it) }
+            it?.let { list -> mAdapter.setData(it) }
             mAdapter.notifyDataSetChanged()
         })
     }

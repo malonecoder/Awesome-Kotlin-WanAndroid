@@ -84,7 +84,7 @@ class TreeFragment : BaseFragment<TreeViewModel>() {
         this.viewModel.getTrees().observe(this@TreeFragment, Observer {
             swipeLayout.isRefreshing = false
             recyclerView.refreshComplete()
-            it?.let { list -> mAdapter.addDataAll(list) }
+            it?.let { list -> mAdapter.setData(list) }
             mAdapter.notifyDataSetChanged()
         })
     }
