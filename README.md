@@ -4,12 +4,10 @@
 项目主要用来入门`kotlin`语言和google推荐的`MVVM`架构，使用了一些`Jetpack`组件来配合MVVM使用，采用了很多流行的开源库，`Okhttp`，`Retrofit`,`Rxjava`,`Glide`，`Livedatabus`等，代码逻辑简单易懂，仅适用入门
 ## 项目功能列表截图
 <img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E7%9B%AE%E5%BD%95.webp" width=280 height=500 /><img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E4%B8%BB%E9%A1%B5%E4%BE%A7%E6%BB%91%E8%8F%9C%E5%8D%95.webp" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E6%B3%A8%E5%86%8C.png" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB.png" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E5%AF%BC%E8%88%AA.png" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E9%A1%B9%E7%9B%AE.png" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E7%A6%8F%E5%88%A9.png" width=280 height=500 />
-<img src="https://github.com/malonecoder/Awesome-Kotlin-WanAndroid/blob/master/screenshots/%E6%94%B6%E8%97%8F.png" width=280 height=500 />
+<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E6%B3%A8%E5%86%8C.webp" width=280 height=500 />
+<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB.webp" width=280 height=500 />
+<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E7%A6%8F%E5%88%A9.webp" width=280 height=500 />
+<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E5%AF%BC%E8%88%AA.webp" width=280 height=500 />  
 ## 功能TODO List
 - [x] 首页
 - [x] 知识体系
