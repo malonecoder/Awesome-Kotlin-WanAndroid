@@ -8,8 +8,9 @@
 <img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB.webp" width=280 height=500 />
 <img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E7%A6%8F%E5%88%A9.webp" width=280 height=500 />
 <img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E5%AF%BC%E8%88%AA.webp" width=280 height=500 />  
-<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E9%A6%96%E9%A1%B5.webp" width=280 height=500 />  
-<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E6%94%B6%E8%97%8F.webp" width=280 height=500 />  
+<figure class="two">
+<img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E9%A6%96%E9%A1%B5.webp" width=280 height=500 /><img src="https://raw.githubusercontent.com/malonecoder/Awesome-Kotlin-WanAndroid/master/screenshots/%E6%94%B6%E8%97%8F.webp" width=280 height=500 />
+</figure>
 ## 功能TODO List
 - [x] 首页
 - [x] 知识体系
